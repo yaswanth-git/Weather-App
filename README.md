@@ -1,1 +1,1 @@
-# This is a simple Weather app buildusing react
+# Weather App created by Yaswanth
