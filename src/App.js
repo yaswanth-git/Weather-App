@@ -7,7 +7,7 @@ function App() {
   const [stat, setStat] = useState(" ");
   useEffect(() => {
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=273c1c260de8002f05c085781e4f5b18&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=273c1c260de8002f05c085781e4f5b18&units=metric`
     )
       .then((response) => response.json())
       .then((jsonResponse) => {
