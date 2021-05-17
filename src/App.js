@@ -44,7 +44,7 @@ function App() {
 
       {
         stat !== " "?
-        <>{stat.cod === 200 ? <Display obj={stat} /> : <>{stat.cod == ""?<div></div>:<div className="error">Enter a city name to get the weather</div>}</> }</>
+        <>{stat.cod === 200 ? <Display obj={stat} /> : <>{stat.cod === ""?<div></div>:<div className="error">Enter a city name to get the weather</div>}</> }</>
           :
         <div></div>
       }
