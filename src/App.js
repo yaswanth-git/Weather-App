@@ -12,11 +12,10 @@ function App() {
       .then((response) => response.json())
       .then((jsonResponse) => {
         if(jsonResponse.cod === 200){
-          console.log("ok response")
           setStat(jsonResponse);
         }
-        else{
-          setStat({cod:"400",message:"Please enter a valid city name"});
+        else if(jsonResponse.cod === "404" || jsonResponse.cod === "400"){
+          setStat({cod:jsonResponse.cod,message:"Please enter a valid city name"});
         }
       })
       .catch((error) => {
@@ -45,7 +44,7 @@ function App() {
 
       {
         stat !== " "?
-        <>{stat.cod === 200 ? <Display obj={stat} /> : <div className="error">{stat.cod} {stat.message}!</div> }</>
+        <>{stat.cod === 200 ? <Display obj={stat} /> : <div className="error">Enter a city name to get the weather</div> }</>
           :
         <div></div>
       }
