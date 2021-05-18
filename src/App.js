@@ -6,22 +6,20 @@ function App() {
   const [city, setCity] = useState("");
   const [stat, setStat] = useState(" ");
   useEffect(() => {
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=273c1c260de8002f05c085781e4f5b18&units=metric`
-    )
-      .then((response) => response.json())
-      .then((jsonResponse) => {
-        if(jsonResponse.cod === 200){
-          setStat(jsonResponse);
-        }
-        else if(jsonResponse.cod === "404" || jsonResponse.cod === "400"){
-          setStat({cod:jsonResponse.cod,message:"Please enter a valid city name"});
-        }
-      })
-      .catch((error) => {
-        setStat(error);
-      });
-  }, [city]);
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=273c1c260de8002f05c085781e4f5b18&units=metric`)
+    .then((response) => response.json())
+    .then((jsonResponse) => {
+      if(jsonResponse.cod === 200){
+        setStat(jsonResponse);
+      }
+      else if(jsonResponse.cod === "404" || jsonResponse.cod === "400"){
+        setStat({cod:jsonResponse.cod,message:"Please enter a valid city name"});
+      }
+    })
+    .catch((error) => {
+      setStat(error);
+    });
+  },[city])
   return (
     <div className="App">
       <div className="heading">
@@ -44,9 +42,9 @@ function App() {
 
       {
         stat !== " "?
-        <>{stat.cod === 200 ? <Display obj={stat} /> : <>{stat.cod === ""?<div></div>:<div className="error">Enter a city name to get the weather</div>}</> }</>
+        <>{stat.cod === 200 ? <Display obj={stat} /> : <>{stat.cod === ""?<div>Network error</div>:<div className="error">{stat.cod} {stat.message}</div>}</> }</>
           :
-        <div></div>
+        <div className="error">Enter a city name to get the weather</div>
       }
     </div>
   );
