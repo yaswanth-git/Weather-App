@@ -1,5 +1,5 @@
 .App{
-    background-image: url("https://rawfour.github.io/weather-app-react/static/media/2850815.246c1201.jpg");
+    background-image: url("./background.jpg");
     background-size: cover;
     background-repeat:no-repeat;
     width: 100%;
@@ -9,7 +9,7 @@
     top: 0;
 }
 .search{
-    margin-top: 10%;
+    margin-top: 5%;
     margin-bottom: 5%;
     display: flex;
     justify-content: center;
@@ -36,7 +36,7 @@ input{
 }
 .content{
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 40% 55%;
 }
 .grid{
     display:grid;
@@ -63,4 +63,5 @@ input{
     text-align: center;
     margin: 10%;
     font-size: xx-large;
+    color: white;
 }
